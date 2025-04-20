@@ -1,0 +1,32 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/graph.py",
+      "use": "@vercel/python"
+    },
+    {
+      "src": "frontend/index.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "frontend/script.js",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "frontend/style.css",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/graph.py"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/frontend/index.html"
+    }
+  ]
+}
+

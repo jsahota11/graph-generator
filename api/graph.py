@@ -1,32 +1,14 @@
-from flask import Flask, send_from_directory, request, jsonify
-from flask_cors import CORS
+from flask import Flask, request, jsonify
 import networkx as nx
-import os
 import random
 
 
 app = Flask(__name__)
-CORS(app)
-
-
-# for my statics
-@app.route('/')
-def serve_index():
-    return send_from_directory('../frontend', 'index.html')
-
-@app.route('/script.js')
-def serve_script():
-    return send_from_directory('../frontend', 'script.js')
-
-@app.route('/style.css')
-def serve_style():
-    return send_from_directory('../frontend', 'style.css')
-
 
 # actually process the form here
 @app.route('/api/data', methods=['POST'])
 def process_data():
-    data = request.get_json();
+    data = request.get_json()
 
     # by construction, absolute default graph is empty
     numVertices = int(data.get("vertices", 0))
@@ -89,5 +71,13 @@ def process_data():
     })
 
 
-if __name__ == '__main__':
-    app.run(debug=True)
+def handler(event, context):
+    from flask import request
+    from werkzeug.wrappers import Request
+    from werkzeug.serving import run_simple
+    
+    @Request.application
+    def application(request):
+        return app.full_dispatch_return()
+
+    return application(event, context)
