@@ -21,3 +21,8 @@ Goal is to implement multiple tools so the user can generate graphs subject to c
 * Implement simple search system to generate known graphs
 * Edge options for: Line type, arrow strike-through, colouring
 * Implement edge weights
+
+##### Meta
+* Figure out what made vercel deployment work
+* Script auto-deploy upon push to main
+* Script dir/file edits upon push to main
