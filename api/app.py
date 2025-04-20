@@ -1,9 +1,11 @@
-from flask import Flask, request, jsonify
+from flask import Flask, send_from_directory, request, jsonify
+from flask_cors import CORS
 import networkx as nx
 import random
 
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/')
 def serve_script():
