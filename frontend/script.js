@@ -81,6 +81,14 @@ async function sendData(event) {
 
     // wait for the back to do its thing
     result = await response.json();
+ 
+    // bad response
+    if (!reponse.ok){
+        text = await response.text(); // read the error page
+        console.error("Server error:", response.status, text); // log it
+        alert(`server responded with ${response.status}: ${text}`); // display to user
+        return;
+    }
 
     // display results in output element (pre in index, but that ruins abstraction!)
     document.getElementById('output').textContent = JSON.stringify(result, null, 2);

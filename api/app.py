@@ -4,6 +4,7 @@ import networkx as nx
 import os
 import random
 
+print("loaded back")
 
 app = Flask(__name__)
 CORS(app)
@@ -35,6 +36,8 @@ def process_data():
     customLabels = data.get("custom_labels", [])
     customEdges = data.get("custom_edges", [])
 
+    print("data loaded from form")
+
     # build the graph!!
 
     G = nx.MultiDiGraph() if directed else nx.MultiGraph()
@@ -62,6 +65,8 @@ def process_data():
     else:
         labels = [str(i) for i in range(numVertices)]
 
+    print("labels chosen based off form")
+
     
     # adding nodes to G
     for label in labels:
@@ -80,7 +85,10 @@ def process_data():
         #might make this also random incase the user wanted a digraph, but i dont care for now
         G.add_edge(u,v)
 
+    print("graph built from form")
 
+    
+    print("now returning json nodes and edges")
     # return the graph data
     return jsonify({
         "nodes" : list(G.nodes),
