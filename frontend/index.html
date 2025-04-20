@@ -5,6 +5,10 @@
         <<meta name="viewport" content="width=device-width">
   <title>Graph Generator</title>
   <link rel="stylesheet" href="style.css">
+        <!-- vis to draw the graph -->
+  <link href="https://unpkg.com/vis-network/styles/vis-network.css" rel="stylesheet" />
+  <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+
 </head>
 <body>
   <h1>Graph Generator</h1>
@@ -19,6 +23,8 @@
             <li>Custom labels entered into the form will only be applied if you select the "custom" label option.</li>
             <li>Have fun!</li>
         </ul>
+
+    <!-- Get the data of the graph --> 
     <form id="graphInfo">
             <label>
                 Vertices: 
@@ -55,11 +61,20 @@
                 <input type="text" name="custom_edges" placeholder="optional" />
             </label><br>
 
+
+            <!-- Listen to this in script -->
             <button type="submit">Generate Graph</button>
     </form>
 
+    <div id="graphContainer" style="height: 500px; border: 1px solid lightgray; margin-top: 20px">
+        
+    </div>
+
+    <!-- Output will be placed here -->
   <h2>Output:</h2>
   <pre id="output"></pre>
-  <script src="script.js"></script>
+
+        <!-- Defer for DOM elements -->    
+  <script src="script.js" defer></script>
 </body>
 </html>

@@ -1,3 +1,5 @@
+console.log("script.js is loaded!");
+
 async function sendData(event) {
     // idk why someone said to online
   event.preventDefault();
@@ -29,7 +31,7 @@ async function sendData(event) {
     if (customEdgeTokens.length > 0){
 
         // incase they were inputted weird
-        edgeList = customEdgeTokens.split(,).map(edge => edge.trim());
+        edgeList = customEdgeTokens.split(',').map(edge => edge.trim());
         for (edge of edgeList){
             endpoints = edge.split("-");
 
@@ -82,7 +84,7 @@ async function sendData(event) {
 
     // display results in output element (pre in index, but that ruins abstraction!)
     document.getElementById('output').textContent = JSON.stringify(result, null, 2);
-}}
+}
 
 // bind sendData to the submit button
-document.getElementById("graphForm").addEventListener("submit", sendData)
+document.getElementById("graphInfo").addEventListener("submit", sendData)
