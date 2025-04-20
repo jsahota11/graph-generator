@@ -5,6 +5,16 @@ import random
 
 app = Flask(__name__)
 
+@app.route('/')
+def serve_script():
+    return send_from_directory('../frontend', 'index.html')
+
+
+@app.route('/script.js')
+def serve_script():
+    return send_from_directory('../frontend', 'script.js')
+
+
 # actually process the form here
 @app.route('/api/data', methods=['POST'])
 def process_data():
