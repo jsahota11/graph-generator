@@ -1,20 +1,25 @@
 from flask import Flask, send_from_directory, request, jsonify
 from flask_cors import CORS
 import networkx as nx
+import os
 import random
 
 
 app = Flask(__name__)
 CORS(app)
 
+# for my statics
 @app.route('/')
-def serve_script():
+def serve_index():
     return send_from_directory('../frontend', 'index.html')
-
 
 @app.route('/script.js')
 def serve_script():
     return send_from_directory('../frontend', 'script.js')
+
+@app.route('/style.css')
+def serve_style():
+    return send_from_directory('../frontend', 'style.css')
 
 
 # actually process the form here
@@ -49,7 +54,7 @@ def process_data():
 
     # user has custom labels
     elif labelType == "custom":
-        if len(custom_labels)!=num_vertices:
+        if len(customLabels)!=numVertices:
             return jsonify({"error": "Number of custom labels must match number of vertices"}), 400
         labels = customLabels
 
@@ -93,3 +98,9 @@ def handler(event, context):
         return app.full_dispatch_return()
 
     return application(event, context)
+
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
+
