@@ -6,3 +6,4 @@ Goal is to implement multiple tools so the user can generate graphs subject to c
 * Implement custom labels
 * Clean up comments and refactor
 * Add style
+* Figure out why it is not working when deployed to Vercel
