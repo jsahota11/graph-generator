@@ -83,7 +83,7 @@ async function sendData(event) {
     result = await response.json();
  
     // bad response
-    if (!reponse.ok){
+    if (!response.ok){
         text = await response.text(); // read the error page
         console.error("Server error:", response.status, text); // log it
         alert(`server responded with ${response.status}: ${text}`); // display to user
