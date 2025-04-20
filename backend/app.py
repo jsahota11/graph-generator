@@ -45,23 +45,23 @@ def process_data():
     ASCII = 65
 
     # user chose integer labels
-    if label_type =="numbers":
+    if labelType =="numbers":
         labels = [str(i) for i in range(numVertices)]
 
     # user chose letter labels
-    elif label_type == "letters":
+    elif labelType == "letters":
         # we need letters
-        labels = [chr(ASCII+i) for i in range(num_vertices)]
+        labels = [chr(ASCII+i) for i in range(numVertices)]
 
     # user has custom labels
-    elif label_type == "custom":
+    elif labelType == "custom":
         if len(custom_labels)!=num_vertices:
             return jsonify({"error": "Number of custom labels must match number of vertices"}), 400
-        labels = custom_labels
+        labels = customLabels
 
     # fallback
     else:
-        labels = [str(i) for i in range(num_vertices)]
+        labels = [str(i) for i in range(numVertices)]
 
     
     # adding nodes to G
@@ -69,12 +69,12 @@ def process_data():
         G.add_node(label)
 
     # add custom edges
-    for edge in custom_edges:
+    for edge in customEdges:
         if len(edge) ==2:
             G.add_edge(edge[0], edge[1])
 
     # add remaining edges if needed
-    while G.number_of_edges() < num_edges:
+    while G.number_of_edges() < numEdges:
         u = random.choice(labels)
         v = random.choice(labels)
 
@@ -85,7 +85,7 @@ def process_data():
     # return the graph data
     return jsonify({
         "nodes" : list(G.nodes),
-        "edges" : [[u,v] for u,v in G.edges]
+        "edges" : list(G.edges)
     })
 
 

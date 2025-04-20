@@ -84,6 +84,19 @@ async function sendData(event) {
 
     // display results in output element (pre in index, but that ruins abstraction!)
     document.getElementById('output').textContent = JSON.stringify(result, null, 2);
+
+    // cook with vis
+    container = document.getElementById('graphContainer');
+    nodes = new vis.DataSet(result.nodes.map(n=>({ id: n, label: n })));
+    edges = new vis.DataSet(result.edges.map(([from, to]) => ({ from, to })));
+    data = {nodes, edges};
+    options ={
+        nodes: {shape: "dot", size: 15},
+        edges: {arrows: directed ? "to" : ""},
+        physics: {enabled: true}
+    };
+
+    new vis.Network(container, data, options);
 }
 
 // bind sendData to the submit button
