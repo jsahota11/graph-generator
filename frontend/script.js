@@ -100,7 +100,7 @@ async function sendData(event) {
     data = {nodes, edges};
     options ={
         nodes: {shape: "dot", size: 15},
-        edges: {arrows: directed ? "middle" : "middle"},
+        edges: {arrows: directed ? "middle" : ""},
         physics: {enabled: true}
     };
 
