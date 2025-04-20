@@ -1,13 +1,65 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8" />
+        <<meta name="viewport" content="width=device-width">
   <title>Graph Generator</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <h1>Graph Generator</h1>
-  <button onclick="sendData()">Send Data</button>
 
+    <p>
+            Welcome to the online graph generator! Simply fill out the form and click the "generate graph" button below.<br>
+            Some general rules:
+        </p>
+        <ul>
+            <li>Vertices should be an integer greater than 0</li>
+            <li>Edges should be an integer with value atleast 0</li>
+            <li>Custom labels entered into the form will only be applied if you select the "custom" label option.</li>
+            <li>Have fun!</li>
+        </ul>
+    <form id="graphInfo">
+            <label>
+                Vertices: 
+                <input type="number" name="vertices" id="vertices" required min="1"/>                
+            </label><br>
+            
+            <label>
+                Edges: 
+                <input type="number" name="edges" required min="0"/>
+            </label><br>
+
+            <label>
+                Labels:
+                <select name="label_type" id="label_type">
+                    <option value="numbers">Numbers (0, 1, ...)</option>
+                    <option value="letters">Letters (A, B, ...)</option>
+                    <option value="none">None</option>
+                    <option value="custom">Custom</option>
+                </select>
+            </label><br>
+
+            <label id="customLabelsContainer" style="display: none;">
+                Enter Custom Labels (comma-separated):
+                <input type="text" name="custom_labels" id="custom_labels" />
+            </label><br>
+
+            <label>
+                Directed Graph?
+                <input type="checkbox" name="directed" />
+            </label><br>
+
+            <label>
+                Custom Edges (A-B, B-C, ...):
+                <input type="text" name="custom_edges" placeholder="optional" />
+            </label><br>
+
+            <button type="submit">Generate Graph</button>
+    </form>
+
+  <h2>Output:</h2>
+  <pre id="output"></pre>
   <script src="script.js"></script>
 </body>
 </html>
