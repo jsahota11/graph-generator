@@ -88,16 +88,7 @@ def process_data():
     })
 
 
-def handler(event, context):
-    from flask import request
-    from werkzeug.wrappers import Request
-    from werkzeug.serving import run_simple
-    
-    @Request.application
-    def application(request):
-        return app.full_dispatch_return()
 
-    return application(event, context)
 
 
 

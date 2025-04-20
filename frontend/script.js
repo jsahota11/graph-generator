@@ -1,3 +1,5 @@
+console.log("Loaded script.js")
+
 async function sendData(event) {
     // idk why someone said to online
   event.preventDefault();
