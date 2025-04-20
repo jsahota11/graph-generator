@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/graph.py",
+      "src": "api/app.py",
       "use": "@vercel/python"
     },
     {
@@ -21,7 +21,7 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "/api/graph.py"
+      "dest": "/api/app.py"
     },
     {
       "src": "/(.*)",
