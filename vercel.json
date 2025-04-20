@@ -24,9 +24,18 @@
       "dest": "/api/app.py"
     },
     {
+      "src": "/script.js",
+      "dest": "/frontend/script.js"
+    },
+    {
+      "src": "/style.css",
+      "dest": "/frontend/style.css"
+    },
+    {
       "src": "/(.*)",
       "dest": "/frontend/index.html"
     }
   ]
 }
+
 
