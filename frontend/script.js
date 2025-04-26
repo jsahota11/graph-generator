@@ -1,5 +1,18 @@
 console.log("Loaded script.js")
 
+function handleLabelTypeChange(){
+    labelSelect = document.getElementById("label_type");
+    customLabelBox = document.getElementById("customLabelsContainer");
+
+    labelSelect.addEventListener("change", function(){
+        if (labelSelect.value === "custom") {
+            customLabelBox.style.display = "inline-block";
+        } else {
+            customLabelBox.style.display = "none";
+        }
+    })
+}
+
 async function sendData(event) {
     // idk why someone said to online
   event.preventDefault();
@@ -109,3 +122,4 @@ async function sendData(event) {
 
 // bind sendData to the submit button
 document.getElementById("graphInfo").addEventListener("submit", sendData)
+document.addEventListener("DOMContentLoaded", handleLabelTypeChange);

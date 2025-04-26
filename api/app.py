@@ -1,10 +1,9 @@
 from flask import Flask, send_from_directory, request, jsonify
 from flask_cors import CORS
 import networkx as nx
-import os
 import random
 
-print("loaded back")
+print("loaded backend")
 
 app = Flask(__name__)
 CORS(app)
@@ -61,9 +60,9 @@ def process_data():
             return jsonify({"error": "Number of custom labels must match number of vertices"}), 400
         labels = customLabels
 
-    # fallback
+    # none for labels
     else:
-        labels = [str(i) for i in range(numVertices)]
+        labels = ["" for i in range(numVertices)]
 
     print("labels chosen based off form")
 
